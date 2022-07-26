@@ -1,11 +1,12 @@
 import * as React from "react"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
-import * as styles from "../components/index.module.css"
 
-const siteLinks = [{ text: "About", url: "About" }]
-
-const utmParameters = `?utm_source=starter&utm_medium=start-page&utm_campaign=default-starter`
+const siteLinks = [
+  { text: "About", url: "/About" },
+  { text: "Archives", url: "/Archives" },
+  { text: "Contact", url: "/Contact" },
+]
 
 const Header = ({ siteTitle }) => (
   <header
@@ -15,6 +16,7 @@ const Header = ({ siteTitle }) => (
       display: `flex`,
       alignItems: `center`,
       justifyContent: `space-between`,
+      backgroundColor: `light-grey`,
     }}
   >
     <Link
@@ -27,10 +29,26 @@ const Header = ({ siteTitle }) => (
       {siteTitle}
     </Link>
 
-    <ul className={styles.link}>
+    <ul
+      style={{
+        margin: `0 `,
+        padding: `var(--space-4) var(--size-gutter)`,
+        display: `flex`,
+        backgroundColor: `light-grey`,
+      }}
+    >
       {siteLinks.map((link, i) => (
         <React.Fragment key={i}>
-          <Link to={link.url}>{link.text}</Link>
+          <Link
+            to={link.url}
+            style={{
+              fontSize: `var(--font-sm)`,
+              textDecoration: `none`,
+              margin: `5px`,
+            }}
+          >
+            {link.text}
+          </Link>
         </React.Fragment>
       ))}
     </ul>
